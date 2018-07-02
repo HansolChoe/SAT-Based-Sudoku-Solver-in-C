@@ -12,24 +12,52 @@
 
 #define MAX_NUMBER_OF_ASTERISKS 4
 #define OUTPUT_FILE_NAME "formula.txt"
+
 typedef struct coordinate {
     int row;
     int col;
 } Coordinate;
+
+int p(int row, int col, int num);
+
+int p_decode(int p);
+
+int print_output();
+
+int make_formula(const char *input);
+
+int main(int argc, const char * argv[]) {
+    int err_check = 0;
+
+    if(argc != 2) {
+        fprintf(stderr,"usage: sudoku [input_file]");
+        return -1;
+    }
+
+    err_check = make_formula(argv[1]);
+    if (err_check) return -1;
+
+    system("minisat formula.txt sudoku.out > minisat.out");
+
+    err_check = print_output();
+    if (err_check) return -1;
+
+    return 0;
+}
 
 int p(int row, int col, int num) {
     return row*81 + col*9 + num;
 }
 
 int p_decode(int p) {
-	int ret = p % 9;
-	if ( ret != 0)
-		return ret;
-	else
-		return 9;
+    int ret = p % 9;
+    if ( ret != 0)
+        return ret;
+    else
+        return 9;
 }
 
-int read_input(const char *input) {
+int make_formula(const char *input) {
     FILE *in = fopen(input, "r");
     FILE *out = fopen(OUTPUT_FILE_NAME, "w");
 
@@ -52,7 +80,7 @@ int read_input(const char *input) {
             }
         }
     } else {
-        fprintf( stderr, "%s is not opened\n", input);
+        fprintf( stderr, "%s is not opend\n", input);
         return -1;
     }
     fclose(in);
@@ -193,27 +221,6 @@ int print_output() {
         fprintf(stderr, "Error in reading sudoku.out\n");
         return -1;
     }
-
-    return 0;
-}
-
-int main(int argc, const char * argv[]) {
-    int err_check = 0;
-
-    if(argc != 2) {
-        fprintf(stderr,"usage: sudoku [input_file]");
-        return -1;
-    }
-
-    err_check = read_input(argv[1]);
-
-    if (err_check) return -1;
-
-    system("minisat formula.txt sudoku.out > minisat.out");
-
-    err_check = print_output();
-
-    if (err_check) return -1;
 
     return 0;
 }
