@@ -9,7 +9,7 @@ $(TARGET) : $(OBJS)
 	$(CC) -o $@ $(OBJS)
 
 clean:
-	rm -f $(OBJS) $(TARGET) output.txt minissat.out sudoku.out
+	rm -f $(OBJS) $(TARGET) output.txt formula.txt minissat.out sudoku.out
 
 new :
 	$(MAKE) clean
