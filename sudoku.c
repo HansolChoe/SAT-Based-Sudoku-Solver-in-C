@@ -52,7 +52,7 @@ int read_input(const char *input) {
             }
         }
     } else {
-        fprintf( stderr, "%s is not opend\n", input);
+        fprintf( stderr, "%s is not opened\n", input);
         return -1;
     }
     fclose(in);

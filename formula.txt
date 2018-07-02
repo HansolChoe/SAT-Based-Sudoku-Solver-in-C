@@ -1,4 +1,4 @@
-p cnf 729 3188
+p cnf 729 3179
 c every row contains every number
 1 10 19 28 37 46 55 64 73 0
 2 11 20 29 38 47 56 65 74 0
@@ -3184,21 +3184,12 @@ c add given numbers on the board 7
 c add given numbers on the board 8
 717 0
 c all asterisks should have the same number
--1 91 0
--91 721 0
--2 92 0
--92 722 0
--3 93 0
--93 723 0
--4 94 0
--94 724 0
--5 95 0
--95 725 0
--6 96 0
--96 726 0
--7 97 0
--97 727 0
--8 98 0
--98 728 0
--9 99 0
--99 729 0
+-1 721 0
+-2 722 0
+-3 723 0
+-4 724 0
+-5 725 0
+-6 726 0
+-7 727 0
+-8 728 0
+-9 729 0
